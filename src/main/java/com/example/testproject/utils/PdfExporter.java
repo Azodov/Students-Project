@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Service
-public class PdfExp {
+public class PdfExporter {
     @Value("${upload.folder}")
     private String uploadFolder;
 
@@ -39,39 +39,42 @@ public class PdfExp {
 
         document.add(pdfPTable);
         document.add(paragraph);
-        PdfPCell r1 = new PdfPCell(Phrase.getInstance("First Name"));
-        PdfPCell r2 = new PdfPCell(Phrase.getInstance("Last Name"));
-        PdfPCell r3 = new PdfPCell(Phrase.getInstance("Middle Name"));
-        PdfPCell r4 = new PdfPCell(Phrase.getInstance("University"));
-        PdfPCell r5 = new PdfPCell(Phrase.getInstance("Field of Study"));
-        PdfPCell r6 = new PdfPCell(Phrase.getInstance("Study Start Date"));
-        PdfPCell r7 = new PdfPCell(Phrase.getInstance("Study End Date"));
-
-        PdfPCell a1 = new PdfPCell(Phrase.getInstance(student.getFirstName()));
-        PdfPCell a2 = new PdfPCell(Phrase.getInstance(student.getLastName()));
-        PdfPCell a3 = new PdfPCell(Phrase.getInstance(student.getMiddleName()));
-        PdfPCell a4 = new PdfPCell(Phrase.getInstance(student.getField_of_studies().getUniversity().getName()));
-        PdfPCell a5 = new PdfPCell(Phrase.getInstance(student.getField_of_studies().getName()));
-        PdfPCell a6 = new PdfPCell(Phrase.getInstance(student.getStudy_start_date()));
-        PdfPCell a7 = new PdfPCell(Phrase.getInstance(student.getStudy_end_date()));
-
-
-
         PdfPTable table = new PdfPTable(2);
         table.setSpacingAfter(25);
         table.setSpacingBefore(25);
+
+        PdfPCell r1 = new PdfPCell(Phrase.getInstance("First Name"));
+        PdfPCell a1 = new PdfPCell(Phrase.getInstance(student.getFirstName()));
         table.addCell(r1);
         table.addCell(a1);
+
+        PdfPCell r2 = new PdfPCell(Phrase.getInstance("Last Name"));
+        PdfPCell a2 = new PdfPCell(Phrase.getInstance(student.getLastName()));
         table.addCell(r2);
         table.addCell(a2);
+
+        PdfPCell r3 = new PdfPCell(Phrase.getInstance("Middle Name"));
+        PdfPCell a3 = new PdfPCell(Phrase.getInstance(student.getMiddleName()));
         table.addCell(r3);
         table.addCell(a3);
+
+        PdfPCell r4 = new PdfPCell(Phrase.getInstance("University"));
+        PdfPCell a4 = new PdfPCell(Phrase.getInstance(student.getField_of_studies().getUniversity().getName()));
         table.addCell(r4);
         table.addCell(a4);
+
+        PdfPCell r5 = new PdfPCell(Phrase.getInstance("Field of Study"));
+        PdfPCell a5 = new PdfPCell(Phrase.getInstance(student.getField_of_studies().getName()));
         table.addCell(r5);
         table.addCell(a5);
+
+        PdfPCell r6 = new PdfPCell(Phrase.getInstance("Study Start Date"));
+        PdfPCell a6 = new PdfPCell(Phrase.getInstance(student.getStudy_start_date()));
         table.addCell(r6);
         table.addCell(a6);
+
+        PdfPCell r7 = new PdfPCell(Phrase.getInstance("Study End Date"));
+        PdfPCell a7 = new PdfPCell(Phrase.getInstance(student.getStudy_end_date()));
         table.addCell(r7);
         table.addCell(a7);
 

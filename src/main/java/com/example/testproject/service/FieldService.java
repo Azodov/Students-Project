@@ -15,4 +15,17 @@ public class FieldService {
     public Field_of_studies save(Field_of_studies fieldOfStudies) {
         return fieldOfStudiesRepository.save(fieldOfStudies);
     }
+
+    public Field_of_studies findById(Long id) {
+        return fieldOfStudiesRepository.findById(id).orElseThrow();
+    }
+
+
+    public Field_of_studies update(Field_of_studies fieldOfStudies) {
+        return fieldOfStudiesRepository.save(fieldOfStudies);
+    }
+
+    public Iterable<Field_of_studies> findAll() {
+        return fieldOfStudiesRepository.findAll();
+    }
 }

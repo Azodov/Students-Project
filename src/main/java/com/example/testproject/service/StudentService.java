@@ -63,4 +63,8 @@ public class StudentService implements StudentServiceImpl{
     public Student findById(Long id) {
         return studentRepository.findById(id).orElse(null);
     }
+
+    public Student findByFileStorageId(Long id) {
+        return studentRepository.findByFileStorageId(id);
+    }
 }

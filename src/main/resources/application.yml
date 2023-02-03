@@ -18,4 +18,4 @@ spring:
       max-request-size: 10MB
 
 upload:
-  folder: C:/Users/botir/OneDrive/Изображения/Test
+  folder: C:/Users/botir/OneDrive/Изображения/Upload

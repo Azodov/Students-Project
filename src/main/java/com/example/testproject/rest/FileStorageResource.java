@@ -62,7 +62,15 @@ public class FileStorageResource {
     }
 
     @DeleteMapping("/delete/{hashId}")
-    public ResponseEntity delete(@PathVariable String hashId){
+    public ResponseEntity<?> delete(@PathVariable String hashId){
+        try{
+            FileStorage fileStorage = fileStorageService.findByHashId(hashId);
+            Student student = studentService.findByFileStorageId(fileStorage.getId());
+            student.setFileStorage(null);
+            studentService.save(student);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         fileStorageService.delete(hashId);
         return ResponseEntity.ok("File ochirildi");
     }

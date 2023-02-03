@@ -23,6 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.itextpdf:itextpdf:5.5.13'
     implementation 'commons-io:commons-io:2.4'
+    implementation 'org.apache.poi:poi:5.2.3'
     implementation 'org.hashids:hashids:1.0.3'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'

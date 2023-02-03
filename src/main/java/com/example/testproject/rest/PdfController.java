@@ -2,7 +2,7 @@ package com.example.testproject.rest;
 
 import com.example.testproject.domain.Student;
 import com.example.testproject.service.StudentService;
-import com.example.testproject.utils.PdfExp;
+import com.example.testproject.utils.PdfExporter;
 import com.itextpdf.text.DocumentException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +16,9 @@ import java.io.IOException;
 @RequestMapping("/api")
 public class PdfController {
     private final StudentService studentService;
-    private final PdfExp pdfExp;
+    private final PdfExporter pdfExp;
 
-    public PdfController(StudentService studentService, PdfExp pdfExp) {
+    public PdfController(StudentService studentService, PdfExporter pdfExp) {
         this.studentService = studentService;
         this.pdfExp = pdfExp;
     }
