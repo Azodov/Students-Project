@@ -1,6 +1,7 @@
 package com.example.testproject.rest;
 
 import com.example.testproject.domain.Student;
+import com.example.testproject.repository.StudentRepository;
 import com.example.testproject.service.StudentService;
 import com.example.testproject.utils.ExcelExporter;
 import com.example.testproject.utils.PdfExporter;
@@ -17,11 +18,13 @@ import java.io.IOException;
 @RequestMapping("/api")
 public class ExporterController {
     private final StudentService studentService;
+    private final StudentRepository studentRepository;
     private final PdfExporter pdfExp;
     private final ExcelExporter excelExporter;
 
-    public ExporterController(StudentService studentService, PdfExporter pdfExp, ExcelExporter excelExporter) {
+    public ExporterController(StudentService studentService, StudentRepository studentRepository, PdfExporter pdfExp, ExcelExporter excelExporter) {
         this.studentService = studentService;
+        this.studentRepository = studentRepository;
         this.pdfExp = pdfExp;
         this.excelExporter = excelExporter;
     }
@@ -38,6 +41,15 @@ public class ExporterController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=students.xlsx";
         response.setHeader(headerKey, headerValue);
-        excelExporter.exportExcel(response);
+        excelExporter.export(response, null);
+    }
+
+    @GetMapping("/excel/{id}")
+    public void excel(HttpServletResponse response, @PathVariable Long id) throws IOException{
+        response.setContentType("application/octet-stream");
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=students.xlsx";
+        response.setHeader(headerKey, headerValue);
+        excelExporter.export(response, id);
     }
 }
