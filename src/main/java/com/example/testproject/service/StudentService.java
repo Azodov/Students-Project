@@ -3,7 +3,6 @@ package com.example.testproject.service;
 import com.example.testproject.domain.Student;
 import com.example.testproject.dto.StudentDto;
 import com.example.testproject.repository.StudentRepository;
-import com.example.testproject.utils.ExcelExporter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,11 +13,11 @@ import java.util.List;
 @Service
 public class StudentService implements StudentServiceImpl{
     private final StudentRepository studentRepository;
-    private final ExcelExporter excelExporter;
+    private final ExporterImpl exporterImpl;
 
-    public StudentService(StudentRepository studentRepository, ExcelExporter excelExporter) {
+    public StudentService(StudentRepository studentRepository, ExporterImpl exporterImpl) {
         this.studentRepository = studentRepository;
-        this.excelExporter = excelExporter;
+        this.exporterImpl = exporterImpl;
     }
 
     @Override
