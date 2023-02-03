@@ -57,9 +57,10 @@ public class ExcelExporter {
         }
 
 
-        ServletOutputStream ops = response.getOutputStream();
-        workbook.write(ops);
+        ServletOutputStream outputStream = response.getOutputStream();
+        workbook.write(outputStream);
         workbook.close();
-        ops.close();
+        outputStream.flush();
+        outputStream.close();
     }
 }

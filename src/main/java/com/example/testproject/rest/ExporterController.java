@@ -15,12 +15,12 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api")
-public class PdfController {
+public class ExporterController {
     private final StudentService studentService;
     private final PdfExporter pdfExp;
     private final ExcelExporter excelExporter;
 
-    public PdfController(StudentService studentService, PdfExporter pdfExp, ExcelExporter excelExporter) {
+    public ExporterController(StudentService studentService, PdfExporter pdfExp, ExcelExporter excelExporter) {
         this.studentService = studentService;
         this.pdfExp = pdfExp;
         this.excelExporter = excelExporter;
